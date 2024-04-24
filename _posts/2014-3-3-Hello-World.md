@@ -17,79 +17,49 @@ Before you begin, ensure that you have the following installed:
 - mysql: Dockerfile and configurations for the MySQL database.
 
 ## Dockerfile(Database)
-![Alt Text](https://raw.githubusercontent.com/DhanviBhimani/DhanviBhimani.github.io/master/images/database.png)
+![Alt Text](https://raw.githubusercontent.com/Techdiyaa/Techdiyaa.github.io/master/images/db%20dockerfile.png)
 
 
-## Dockerfile(Backend)
-![Alt Text](https://raw.githubusercontent.com/DhanviBhimani/DhanviBhimani.github.io/master/images/backend.png)
-## Dockerfile(Frontend)
-![Alt Text](https://raw.githubusercontent.com/DhanviBhimani/DhanviBhimani.github.io/master/images/frontend.png)
+## Dockerfile(Frontend - Backend)
+![Alt Text](https://raw.githubusercontent.com/Techdiyaa/Techdiyaa.github.io/master/images/frontend%20bacend%20dockerfile.png)
+
 ## Deployment Steps
 0. Create Network
    - Navigate to the project directory
    - bash
      docker network create my-network
      
-     ![Alt Text](https://raw.githubusercontent.com/DhanviBhimani/DhanviBhimani.github.io/master/images/img3.png)
-1. MySQL Database:
+     ![Alt Text](https://raw.githubusercontent.com/Techdiyaa/Techdiyaa.github.io/master/images/1.jpg)
+     
+1. MongoDb Database:   - Navigate to the Mongodb directory.
+   - Build the Mongodb Docker image:
+     bash
+     docker build -t 21bcp454d_db_img .
+     
+     
+     ![Alt Text](https://raw.githubusercontent.com/Techdiyaa/Techdiyaa.github.io/master/images/4.jpg)
 
-   - Navigate to the mysql directory.
-   - Build the MySQL Docker image:
-     bash
-     docker build -t mysql-image .
      
-     
-     ![Alt Text](https://raw.githubusercontent.com/DhanviBhimani/DhanviBhimani.github.io/master/images/img1.png)
-
-     
-   - Run the MySQL container:
-     bash
-     docker run --name mysql-container --network=three-tier-network -p 3306:3306 -v mysql-data:/var/lib/mysql -d mysql-image
-     
-     ![Alt Text](https://raw.githubusercontent.com/DhanviBhimani/DhanviBhimani.github.io/master/images/img4.png)
-   - Access the MySQL container:
-     bash
-     docker exec -it mysql-container /bin/bash
-     
-   - Inside the container, create tables for the database:
-     sql
-     ![Alt Text](https://raw.githubusercontent.com/DhanviBhimani/DhanviBhimani.github.io/master/images/img7.png)
+   - Run the MongoDB container:
+ 
+     ![Alt Text](https://raw.githubusercontent.com/Techdiyaa/Techdiyaa.github.io/master/images/5.jpg)
   
-     ![Alt Text](https://raw.githubusercontent.com/DhanviBhimani/DhanviBhimani.github.io/master/images/img8.png)
-2. Backend Application:
+2. Frontend - Backend Application:
 
-   - Navigate to the backend directory.
+   - Navigate to its directory.
    - Build the backend Docker image:
      bash
-     docker build -t backend .
+     docker build -t 21bcp454d_frontend_backend_img .
      
-     ![Alt Text](https://raw.githubusercontent.com/DhanviBhimani/DhanviBhimani.github.io/master/images/img9.png)
-   - Run the backend container:
+     ![Alt Text](https://raw.githubusercontent.com/Techdiyaa/Techdiyaa.github.io/master/images/2.jpg)
+   - Run the frontend-backend container:
      bash
-     docker run -d -p 3500:3500 --name backend-container --network=three-tier-network backend
      
-     ![Alt Text](https://raw.githubusercontent.com/DhanviBhimani/DhanviBhimani.github.io/master/images/img10.png)
-3. Frontend Application:
+     ![Alt Text](https://raw.githubusercontent.com/Techdiyaa/Techdiyaa.github.io/master/images/3.jpg)
 
-   - Navigate to the frontend directory.
-   - Build the frontend Docker image:
-     bash
-     docker build -t frontend .
-     
-     ![Alt Text](https://raw.githubusercontent.com/DhanviBhimani/DhanviBhimani.github.io/master/images/img11.png)
-   - Run the frontend container:
-     bash
-     docker run -d --name frontend-container --network=three-tier-network -p 80:80 frontend
-     
-     ![Alt Text](https://raw.githubusercontent.com/DhanviBhimani/DhanviBhimani.github.io/master/images/img12.png)
-4. Access the Application:
+3. Access the Application:
 
-   Open your favorite browser and visit [http://localhost:80](http://localhost:80). Enjoy exploring the MERN stack application!
-   ![Alt Text](https://raw.githubusercontent.com/DhanviBhimani/DhanviBhimani.github.io/master/images/img16.png)
+   Open your favorite browser and visit [http://localhost:3000](http://localhost:3000). Enjoy exploring the pplication!
+   ![Alt Text](https://raw.githubusercontent.com/Techdiyaa/Techdiyaa.github.io/master/images/6op.jpg)
 
     
-## Data Persistence
-
-Data persistence is ensured by using Docker volumes. If the MySQL container is deleted, data remains available and is automatically added to a new Docker container by providing the same Docker volume.
-
-Feel free to explore and modify the Dockerfiles to enhance your understanding of containerization and deployment! Happy coding! 🚀
